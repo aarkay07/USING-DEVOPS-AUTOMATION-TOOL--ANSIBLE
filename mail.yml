@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks:
+     - mail:
+        host: smtp.gmail.com
+        port: 587
+        username: <enter sender id>
+        password: <enter password here>
+        to: <enter reciever id>
+        subject: Testing
+        body: Hi. This is an Ansible-automated mail.
+

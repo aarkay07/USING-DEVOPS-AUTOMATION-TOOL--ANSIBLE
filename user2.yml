@@ -1,0 +1,26 @@
+
+- hosts: all
+  vars_prompt:
+   - name: y
+     prompt: "Please enter the group name"
+     private: no
+   - name: x
+     prompt: "Please enter the username"
+     private: no
+   - name: z
+     prompt: "Enter the password"
+     private: yes
+     encrypt: "sha512_crypt"
+     confirm: yes
+     unsafe: yes
+  
+  tasks:
+   - group:
+       name: "{{ y }}"
+       state: present
+   - user:
+       name: "{{ x }}"
+       comment: rajat
+       group: "{{ y }}"
+       password: "{{ z }}"
+ 

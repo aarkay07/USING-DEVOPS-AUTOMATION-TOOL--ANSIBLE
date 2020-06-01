@@ -1,0 +1,15 @@
+
+- hosts: all
+  tasks:
+     - name: creating a group
+       group:
+         name: test 
+         state: present
+     - name: creating a user
+       user:
+         name: test
+         comment: Divyansh
+         uid: 1001
+         group: test
+         password: test
+

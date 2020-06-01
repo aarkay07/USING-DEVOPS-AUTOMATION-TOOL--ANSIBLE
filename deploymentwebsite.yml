@@ -1,0 +1,12 @@
+#change src and dest for both
+---
+- name: copy
+  hosts: all
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+    - name: "copy file 1"
+      copy: src= dest=/var/www/html/login.html
+    - name: "copy file 2"
+      copy: src= dest=/var/www/html/login.php

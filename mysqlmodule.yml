@@ -1,0 +1,24 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+    - name: Install "pip"
+      apt: name=python-pip state=present
+
+    - name: Install "libmysqlclient-dev"
+      apt: name=libmysqlclient-dev state=present
+
+    - name: Install the Python MySQL module
+      pip: name=MySQL-python
+
+    - name: Create database user rahul
+      mysql_user: user=rahul password=rahul priv=*.*:ALL state=present
+
+    - name: Create database student
+      mysql_db: db=student state=present
+
+    - name: Create table stu
+      command: mysql -u rahul -prahul -e 'CREATE TABLE stu (name varchar(30), reg varchar(10));' student
+
+

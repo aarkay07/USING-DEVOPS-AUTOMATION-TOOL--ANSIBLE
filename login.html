@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<center><h1>STUDENT REGISTRATION</h1></center>
+<div style='border:4px solid green; padding-left:100px; padding-right:100px; background-color:white'>
+<center><form name="login" action="login.php" method="POST"><br>
+<table cellspacing='3' cellpadding='3'>
+<tr>
+<td>Name :</td>
+<td><input type ="text" name="name" id="name" required></td>
+</tr>
+<tr><td>Registration No. :</td>
+<td><input type="text" name="reg" id="reg" required></td>
+</tr>
+</table>
+<br>
+<input type="submit" value="  Submit  ">
+<br><br>
+</form>
+</center>
+</div>
+</body>
+</html>
+
+
+-----
+http.yml
+
+- hosts: localhost
+  tasks:
+      - name: web server install
+        package:
+           name: httpd
+           state: present
+      - name: service start
+        service:
+           name: httpd
+           state: started

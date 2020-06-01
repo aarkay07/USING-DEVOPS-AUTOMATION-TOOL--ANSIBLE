@@ -1,0 +1,31 @@
+- hosts: all
+  vars_prompt:
+             - name: "senderid"
+               prompt: "Enter email id of sender"
+               private: no
+             - name: "senderpassword"
+               prompt: "Enter the password"
+               encrypt: "sha512_crypt"
+               private: yes
+               unsafe: yes
+             - name: "recieverid"
+               prompt: "Enter the reciever's email id"
+               private: no
+             - name: "subject"
+               prompt: "Enter the subject of the email"
+               private: no
+             - name: "body"
+               prompt: "enter the body of email"
+               private: no
+  tasks:
+     - mail:
+        host: smtp.gmail.com
+        port: 587
+        username: "{{senderid}}"
+        password: "{{senderpassword}}"
+        to: "{{recieverid}}"
+        subject: "{{subject}}"
+        body: "{{body}}"
+        secure: starttls
+
+
